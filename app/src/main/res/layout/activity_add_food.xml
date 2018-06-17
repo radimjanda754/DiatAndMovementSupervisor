@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="cz.cvut.fit.damsupervisor.AddFoodActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layoutFindFoodInDB"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorLightBlue">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/food_searchFood"
+        android:id="@+id/textFindFoodInDB"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="10dp"
+        android:textColor="@color/colorWhite"
+        />
+    </LinearLayout>
+
+    <SearchView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchViewFood"
+        android:layout_below="@+id/layoutFindFoodInDB"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editTextGOP"
+        android:hint="@string/food_hint"
+        android:layout_below="@+id/searchViewFood"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerGramsOrPieces"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/searchViewFood"
+        android:layout_toRightOf="@id/editTextGOP"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/food_type"
+        android:textColor="@color/colorBlack"
+        android:id="@+id/textFoodType"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/spinnerGramsOrPieces"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinnerGramsOrPieces"
+        android:id="@+id/spinnerFoodType"
+        android:layout_toRightOf="@+id/editTextGOP" />
+
+    <RelativeLayout
+        android:id="@+id/layoutAddFoodDay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textViewAddedFoodsTotal"
+        android:background="@color/colorLightWhite"
+        android:layout_marginTop="5dp">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/food_add"
+        android:id="@+id/buttonAddFoodBySearch"
+        android:textColor="@color/colorFlatButton"
+        android:textStyle="bold"
+        style="?attr/borderlessButtonStyle"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="onClickAddFoodToDay"/>
+
+    <Button
+        android:textColor="@color/colorFlatButton"
+        android:textStyle="bold"
+        style="?attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no"
+        android:id="@+id/buttonUndoFood"
+        android:layout_alignParentLeft="true"
+        android:onClick="onClickDelFood"/>
+    </RelativeLayout>
+
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewAddedFood"
+        android:text="@string/sport_food_added_def"
+        android:layout_below="@+id/spinnerFoodType"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/colorRed"
+        android:paddingLeft="10dp"/>
+
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewAddedFoodsTotal"
+        android:text="@string/sport_food_total_def"
+        android:textColor="@color/colorRed"
+        android:layout_below="@+id/textViewAddedFood"
+        android:layout_alignParentLeft="true"
+        android:paddingLeft="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layoutFindAddFoodToDB"
+        android:layout_below="@+id/layoutAddFoodDay"
+        android:background="@color/colorLightBlue">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/food_addFood"
+        android:id="@+id/textViewAddFoodToDB"
+        android:layout_below="@+id/buttonAddFoodBySearch"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/colorWhite"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/food_name"
+        android:id="@+id/textViewFoodName"
+        android:layout_below="@+id/layoutFindAddFoodToDB"
+        android:paddingTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="10dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/editTextFoodName"
+        android:layout_below="@+id/textViewFoodName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/food_proteins"
+        android:id="@+id/textViewProts"
+        android:layout_below="@+id/editTextFoodName"
+        android:paddingTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="10dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editTextProts"
+        android:layout_below="@+id/textViewProts"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/food_carbs"
+        android:id="@+id/textViewCarbs"
+        android:layout_below="@+id/editTextProts"
+        android:paddingTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="10dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editTextCarbs"
+        android:layout_below="@+id/textViewCarbs"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/food_fat"
+        android:id="@+id/textViewFat"
+        android:layout_below="@+id/editTextCarbs"
+        android:paddingTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="10dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editTextFats"
+        android:layout_below="@+id/textViewFat"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="20dp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/food_energy"
+        android:id="@+id/textViewEnergy"
+        android:layout_below="@+id/editTextFats"
+        android:paddingTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="10dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editTextEnergy"
+        android:layout_below="@+id/textViewEnergy"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/food_piece"
+        android:id="@+id/textViewGramsInPiece"
+        android:layout_below="@+id/editTextEnergy"
+        android:paddingTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="10dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editTextGramsInPiece"
+        android:layout_below="@+id/textViewGramsInPiece"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="20dp" />
+
+    <RelativeLayout
+        android:id="@+id/layoutAddFoodDB"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/editTextGramsInPiece"
+        android:background="@color/colorLightWhite"
+        android:layout_marginTop="5dp">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/food_add"
+            android:id="@+id/buttonAddFoodToDB"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:onClick="onClickAddFoodToDB"
+            android:textColor="@color/colorFlatButton"
+            android:textStyle="bold"
+            style="?attr/borderlessButtonStyle"/>
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>
+</ScrollView>
